@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<launch>
+
+  <arg name="GO_TOPIC_LEG_STATE" default="/go1/joint_states"/>
+  <arg name="GO_TOPIC_LEG_COMMAND" default="/go1/joint_torque_controller/command"/>
+
+  <param name="go1_topic_leg_state" value="$(arg GO_TOPIC_LEG_STATE)"/>
+  <param name="go1_topic_leg_command" value="$(arg GO_TOPIC_LEG_COMMAND)"/>
+
+  <!-- ros_control hexapod launch file -->
+  <include file="$(find go1_control)/launch/go1_control.launch"/>
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+	respawn="false" output="screen">
+    <remap from="/joint_states" to="/hexapod/joint_states" />
+  </node> -->
+
+  <node pkg="go1_controller" name="go1" type="go1_node" output="screen"/>
+</launch>

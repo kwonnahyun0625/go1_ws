@@ -1,0 +1,24 @@
+go1:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 1000
+
+  joint_torque_controller:
+    type: effort_controllers/JointGroupEffortController
+    joints: 
+      - F1_1
+      - F1_2
+      - F1_3
+      - F2_1
+      - F2_2
+      - F2_3
+      - H1_1
+      - H1_2
+      - H1_3
+      - H2_1
+      - H2_2
+      - H2_3
+
+
+
+
